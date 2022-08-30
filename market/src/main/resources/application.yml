@@ -6,5 +6,5 @@ spring:
     port:
       - 5672
       - 15672
-    username: guest
-    password: guest
+    username: admin
+    password: admin

@@ -16,7 +16,7 @@
     <bytecodeTargetLevel>
       <module name="compras" target="11" />
       <module name="Loja" target="11" />
-      <module name="market" target="17" />
+      <module name="market" target="11" />
       <module name="Projeto de loja" target="11" />
       <module name="validator" target="11" />
     </bytecodeTargetLevel>

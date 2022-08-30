@@ -1,16 +1,5 @@
 version: '3.9'
 services:
-  backend:
-    container_name: backend
-    restart: always
-    build: .
-    ports:
-      - "8080:8080"
-    links:
-      - rabbitmq
-    networks:
-      host:
-
   rabbitmq:
     restart: always
     image: rabbitmq:3.9-management
