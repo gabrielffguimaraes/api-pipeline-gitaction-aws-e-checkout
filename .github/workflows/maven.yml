@@ -23,7 +23,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build & push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
+      uses: rabbitmq:3.9-management
       with:
         image: 04894/javatech
         tags: latest
