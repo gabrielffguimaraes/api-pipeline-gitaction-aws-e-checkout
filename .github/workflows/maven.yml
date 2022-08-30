@@ -13,7 +13,15 @@ jobs:
   tests:
 
     runs-on: ubuntu-latest
-
+    services:
+      rabbitmq:
+        image: rabbitmq:3.9
+        env:
+          RABBITMQ_DEFAULT_USER: admin
+          RABBITMQ_DEFAULT_PASS: admin
+        ports:
+          - 5672
+          - 15672
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -22,13 +30,5 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build & push Docker image
-      with:
-        image: 04894/javatech
-        tags: latest
-        registry: docker.io
-        dockerfile: Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build & push Docker image
+    - name: Build with Maven
       run: mvn -B test --file ./market/pom.xml
