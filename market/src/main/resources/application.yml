@@ -8,3 +8,5 @@ spring:
       - 15672
     username: admin
     password: admin
+
+   

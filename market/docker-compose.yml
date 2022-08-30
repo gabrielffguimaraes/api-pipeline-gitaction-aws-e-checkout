@@ -2,6 +2,7 @@ version: '3.9'
 services:
   rabbitmq:
     restart: always
+    hostname: rabbitmq-container
     image: rabbitmq:3.9-management
     environment:
       RABBITMQ_DEFAULT_USER: "admin"
@@ -10,7 +11,23 @@ services:
       - '5672:5672'
       - '15672:15672'
     networks:
-      host:
-
+      - net-backend
+  backend:
+    container_name: backend
+    restart: always
+    build: .
+    environment:
+      - spring_rabbitmq_hostname=rabbitmq
+      - spring_rabbitmq_port=5672
+      - spring_rabbitmq_username=admin
+      - spring_rabbitmq_password=admin
+    ports:
+      - 8080:8080
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+    networks:
+      - net-backend
 networks:
-  host:
+  net-backend:
