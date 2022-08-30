@@ -24,8 +24,6 @@ jobs:
         cache: maven
     - name: Build & push Docker image
       run: mvn -B test --file ./market/pom.xml
-    - name: Build & push Docker image 2
-      uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: 04894/javatech
         tags: latest
